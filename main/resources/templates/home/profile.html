@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layouts/base">
+<head>
+    <title>Profile</title>
+</head>
+<body class="bg-secondary">
+<div data-layout-fragment="content" class="row">
+    <div class="order-1 order-md-1 col-md-3 mb-3">
+        <div data-th-replace="fragments/f-subscriptions :: subscriptions(model=${subscriptions})"></div>
+    </div>
+    <div class="order-3 order-md-2 col-md-6 mb-3">
+        <div data-th-each="event : ${events}" class="mb-3">
+            <div data-th-replace="fragments/f-event :: event(model=${event})"></div>
+        </div>
+    </div>
+    <div class="order-2 order-md-3 col-md-3 mb-3">
+        <div data-th-replace="fragments/f-profile-stat :: profile-stat(model=${profileStat})"></div>
+        <div data-th-unless="${isCurrentUserProfile}">
+            <a class="btn btn-primary" data-th-href="${'/home/profile/subscribe?id=' + displayUser.id}" role="button" data-th-if="${canSubscribe}">Subscribe</a>
+            <a class="btn btn-primary" data-th-href="${'/home/profile/unsubscribe?id=' + displayUser.id}" role="button" data-th-unless="${canSubscribe}">Unsubscribe</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

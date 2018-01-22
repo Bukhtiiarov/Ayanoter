@@ -1,0 +1,12 @@
+<div class="card" data-th-fragment="subscriptions (model)">
+    <div class="card-header">
+        Subscriptions
+    </div>
+    <ul class="list-group list-group-flush">
+        <div data-th-each="subscription : ${model}" data-th-remove="tag">
+            <li class="list-group-item">
+                <a data-th-href="${'/home/profile?id=' + subscription.id}" data-th-text="${subscription.login}"></a>
+            </li>
+        </div>
+    </ul>
+</div>
